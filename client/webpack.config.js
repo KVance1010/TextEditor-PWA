@@ -8,10 +8,7 @@ module.exports = () => {
 		mode: 'development',
 		entry: {
 			main: './src/js/index.js',
-			install: './src/js/install.js',
-			database: './src/js/database.js',
-			editor: './src/js/editor.js',
-			header: './src/js/header.js',
+			install: './src/js/install.js'
 		},
 		output: {
 			filename: '[name].bundle.js',
@@ -20,7 +17,7 @@ module.exports = () => {
 		plugins: [
 			new HtmlWebpackPlugin({
 				template: './index.html',
-				title: 'JATE',
+				title: 'J.A.T.E',
 			}),
 	
 			new InjectManifest({
@@ -31,7 +28,7 @@ module.exports = () => {
 			new WebpackPwaManifest({
 				fingerprints: false,
 				inject: true,
-				name: 'JATE',
+				name: 'J.A.T.E',
 				short_name: 'Logo',
 				description: 'logo',
 				background_color: '#1b89bc',

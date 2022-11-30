@@ -1,14 +1,52 @@
-# Unit 19 PWA Challenge: Text Editor
+# JATE Text Editor
 
-## Your Task
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-As you have progressed through this course, you have put together a number of impressive projects that you can show off to potential employers. This project is no exception; in fact, it features some of the most impressive expressions of the concepts you have learned so far.
+## Description
 
-Your task is to build a text editor that runs in the browser. The app will be a single-page application that meets the PWA criteria. Additionally, it will feature a number of data persistence techniques that serve as redundancy in case one of the options is not supported by the browser. The application will also function offline.
+Jate is a simple text editor that is designed as a single page webpage and also meets the PWA criteria. This application will function offline and features a number of data persistence techniques that serve as redundancy in case one of the options in not supported. This application features IndexedDB api; Which is used for storing information.
 
-To build this text editor, you will start with an existing application and implement methods for getting and storing data to an IndexedDB database. You will use a package called `idb`, which is a lightweight wrapper around the IndexedDB API. It features a number of methods that are useful for storing and retrieving data, and is used by companies like Google and Mozilla.
+---
 
-You will deploy this full-stack application to Heroku using the [Heroku Deployment Guide on The Full-Stack Blog](https://coding-boot-camp.github.io/full-stack/heroku/heroku-deployment-guide).
+### Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies](#technologies)
+- [User-Story](#user-story)
+- [Acceptance-Criteria](#acceptance-criteria)
+- [Screenshots](#screenshots)
+- [CodeSnippets](#codeSnippets)
+- [License](#license)
+- [Contributors](#contributors)
+- [Tests](#tests)
+- [Important-Information-Questions](#important-information-questions)
+
+---
+
+## Installation
+
+To install this application you have to run "npm install" followed by "npm build" in the command line. Running these commands will import all the required modules and dependencies. Next, start the program by running "npm run start:dev" in the command line and open the web browser to https://localhost:3001/.
+
+
+---
+
+## Usage
+
+This application can be used as a text editor that can be downloaded as a standard alone application. 
+
+---
+
+## Technologies
+
+- **IDB**
+- **Heroku**
+- **Workbox**
+- **Express**
+- **Node.js**
+- **GitHub**
+
+---
 
 ## User Story
 
@@ -48,85 +86,75 @@ WHEN I deploy to Heroku
 THEN I should have proper build scripts for a webpack application
 ```
 
-## Mock-Up
+## Screenshots
 
-The following animation demonstrates the application functionality:
+#### Screenshot of the homePage
 
-![Demonstration of the finished Unit 19 Challenge being used in the browser and then installed.](./Assets/00-demo.gif)
+![HomePage](./assets/screen1.jpg)
 
-The following image shows the application's `manifest.json` file:
+#### 
 
-![Demonstration of the finished Unit 19 Challenge with a manifest file in the browser.](./Assets/01-manifest.png)
+![Add Delete](./assets/        .gif)
 
-The following image shows the application's registered service worker:
+---
 
-![Demonstration of the finished Unit 19 Challenge with a registered service worker in the browser.](./Assets/02-service-worker.png)
+## CodeSnippets
 
-The following image shows the application's IndexedDB storage:
+#### Add data to IDB
 
-![Demonstration of the finished Unit 19 Challenge with a IndexedDB storage named 'jate' in the browser.](./Assets/03-idb-storage.png)
+``` JavaScript 
+export const getDb = async () => {
+  const jateDb = await openDB('jate', 1);
+  const trans = jateDb.transaction('jate', 'readonly');
+  const notes = trans.objectStore('jate');
+  const request = notes.getAll();
+  const result = await request;
+  return result;
+};
+```
 
-## Grading Requirements
+#### On first loading page caching
 
-This challenge is graded based on the following criteria:
+``` JavaScript
+const pageCache = new CacheFirst({
+	cacheName: 'page-cache',
+	plugins: [
+		new CacheableResponsePlugin({
+			statuses: [0, 200],
+		}),
+		new ExpirationPlugin({
+			maxAgeSeconds: 30 * 24 * 60 * 60,
+		}),
+	],
+});
+```
 
-### Technical Acceptance Criteria: 40%
+---
 
-* Satisfies all of the above acceptance criteria plus the following:
+## Tests
 
-  * Uses IndexedDB to create an object store and includes both GET and PUT methods
+N/A
 
-  * The application works without an internet connection
+---
 
-  * Automatically saves content inside the text editor when the DOM window is unfocused
+## **Important-Information-Questions**
 
-  * Bundled with webpack
+---
 
-  * Create a service worker with workbox that Caches static assets
+## License
 
-  * The application should use babel in order to use async / await
+The license used on this project was MIT license
 
-  * Application must have a generated `manifest.json` using the `WebpackPwaManifest` plug-in
+[license link](https://opensource.org/licenses/MIT)
 
-  * Can be installed as a Progressive Web Application
+## Contributors
 
-### Deployment: 32%
+Kyle Vance
 
-* Application deployed to Heroku at live URL with build scripts
+## Questions
 
-* Application loads with no errors
+If you have any questions regarding this project, please reach me by email at vanceofalifetime@protonmail.com
 
-* Application GitHub URL submitted
+[Live Link](https://enigmatic-garden-09228.herokuapp.com/)
 
-* GitHub repo contains application code
-
-### Application Quality: 15%
-
-* Application user experience is intuitive and easy to navigate
-
-* Application user interface style is clean and polished
-
-* Application resembles the mock-up functionality provided in the challenge instructions
-
-### Repository Quality: 13%
-
-* Repository has a unique name
-
-* Repository follows best practices for file structure and naming conventions
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages
-
-* Repository contains quality README file with description, screenshot, and link to deployed application
-
-## Review
-
-You are required to submit the following for review:
-
-* The URL of the deployed application
-
-* The URL of the GitHub repository, with a unique name and a README describing the project
-
-- - -
-© 2022 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
+[LinkedIn](https://www.linkedin.com/in/kyle-s-vance/)

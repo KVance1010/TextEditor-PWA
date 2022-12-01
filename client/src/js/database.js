@@ -22,14 +22,12 @@ export const putDb = async (content) => {
 };
 
 export const getDb = async () => {
-  console.log('Getting jate');
   const jateDb = await openDB('jate', 1);
   const trans = jateDb.transaction('jate', 'readonly');
   const notes = trans.objectStore('jate');
   const request = notes.getAll();
   const result = await request;
-  console.log(result);
-  return result?.content 
+  return result
 };
 
 initdb();

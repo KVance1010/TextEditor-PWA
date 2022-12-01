@@ -100,7 +100,7 @@ THEN I should have proper build scripts for a webpack application
 
 ## CodeSnippets
 
-#### Add data to IDB
+#### Get data from IDB
 
 ``` JavaScript 
 export const getDb = async () => {
@@ -113,7 +113,7 @@ export const getDb = async () => {
 };
 ```
 
-#### On first loading page caching
+#### Page caching on page load
 
 ``` JavaScript
 const pageCache = new CacheFirst({

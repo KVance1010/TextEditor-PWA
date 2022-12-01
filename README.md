@@ -88,13 +88,13 @@ THEN I should have proper build scripts for a webpack application
 
 ## Screenshots
 
+#### Console log in text editor
+
+![consoleLog](./assets/screen1.jpg)
+
 #### Screenshot of the homePage
 
-![HomePage](./assets/screen1.jpg)
-
-#### 
-
-![Add Delete](./assets/        .gif)
+![HomePage](./assets/screen12.jpg)
 
 ---
 

@@ -1,4 +1,4 @@
-const { offlineFallback, warmStrategyCache } = require('workbox-recipes');
+const {  offlineFallback, warmStrategyCache } = require('workbox-recipes');    
 const { CacheFirst, StaleWhileRevalidate } = require('workbox-strategies');
 const { registerRoute } = require('workbox-routing');
 const { CacheableResponsePlugin } = require('workbox-cacheable-response');
@@ -25,7 +25,7 @@ warmStrategyCache({
 });
 
 offlineFallback({
-	pageFallback: '/offline.html',
+	pageFallback: '/index.html',
 });
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
